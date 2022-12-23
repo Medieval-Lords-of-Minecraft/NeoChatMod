@@ -1,9 +1,9 @@
 name: NeoChatMod
 author: Neoblade298
-main: me.neoblade298.neochatmod.Main
+main: me.neoblade298.neochatmod.ChatMod
 api-version: 1.14
 version: 1.0
-depend: [TownyChat]
+softdepend: [TownyChat]
 commands:
    servermute:
       description: Does its job

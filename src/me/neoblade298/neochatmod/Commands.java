@@ -8,16 +8,17 @@ import org.bukkit.command.CommandSender;
 
 public class Commands implements CommandExecutor{
 	
-	Main main;
+	ChatMod main;
 	
-	public Commands(Main main) {
+	public Commands(ChatMod main) {
 		this.main = main;
 	}
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String lbl, String[] args) {
 		if (args.length == 0 && sender.hasPermission("mycommand.staff")) {
-			if (this.main.getMute()) {
+			ChatMod.muteGlobal = !ChatMod.muteGlobal;
+			if (!ChatMod.muteGlobal) {
 				Bukkit.broadcastMessage("§4[§c§lMLMC§4] §7The server chat has been unmuted!");
 			}
 			else {
@@ -26,7 +27,6 @@ public class Commands implements CommandExecutor{
 				}
 				Bukkit.broadcastMessage("§4[§c§lMLMC§4] §7The server chat has been muted!");
 			}
-			this.main.toggleMute();
 			return true;
 		}
 		return false;
