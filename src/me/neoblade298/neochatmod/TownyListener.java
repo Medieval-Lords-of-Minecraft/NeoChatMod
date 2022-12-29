@@ -11,7 +11,7 @@ public class TownyListener implements Listener {
 
 	int QUEST_X_BOUND_1 = 11;
 	int QUEST_X_BOUND_2 = 41;
-	int QUEST_Z_BOUND_1 = 38;
+	int QUEST_Z_BOUND_1 = 40;
 	int QUEST_Z_BOUND_2 = 80;
 	@EventHandler(ignoreCancelled=true)
 	public void onChat(ChatChannelEvent e) {
