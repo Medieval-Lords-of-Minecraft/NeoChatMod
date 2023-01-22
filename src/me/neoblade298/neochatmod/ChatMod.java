@@ -11,8 +11,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import me.neoblade298.neocore.NeoCore;
-import me.neoblade298.neocore.instancing.InstanceType;
+
+import me.neoblade298.neocore.bukkit.InstanceType;
+import me.neoblade298.neocore.bukkit.NeoCore;
 
 public class ChatMod extends JavaPlugin implements Listener {
 	File file = null;
@@ -26,12 +27,8 @@ public class ChatMod extends JavaPlugin implements Listener {
 
 	public void onEnable() {
 		Bukkit.getServer().getLogger().info("NeoChatMod Enabled");
-		if (NeoCore.getInstanceType() == InstanceType.TOWNY) {
-			getServer().getPluginManager().registerEvents(new TownyListener(), this);
-		}
-		else {
-			getServer().getPluginManager().registerEvents(new DefaultListener(), this);
-		}
+		getServer().getPluginManager().registerEvents(new DefaultListener(), this);
+		if (NeoCore.getInstanceType() == InstanceType.HUB) getServer().getPluginManager().registerEvents(new HubListener(), this);
 	    this.getCommand("servermute").setExecutor(new Commands(this));
 
 		// Save config if doesn't exist
@@ -68,7 +65,6 @@ public class ChatMod extends JavaPlugin implements Listener {
 			e.setCancelled(true);
 			return;
 		}
-
 		
 		// Check if it contained a curse word
 		for (String word : bannedWords) {
