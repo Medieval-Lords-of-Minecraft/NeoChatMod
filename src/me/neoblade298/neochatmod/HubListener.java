@@ -5,7 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import me.neoblade298.neocore.bukkit.util.BukkitUtil;
+import me.neoblade298.neocore.bukkit.util.Util;
 
 
 public class HubListener implements Listener {
@@ -13,7 +13,7 @@ public class HubListener implements Listener {
 	public void onChat(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
 		if (!p.hasPlayedBefore()) {
-			BukkitUtil.msg(p, "You are muted until choosing a server! Use your compass or enter a portal!");
+			Util.msg(p, "You are muted until choosing a server! Use your compass or enter a portal!");
 			e.setCancelled(true);
 			return;
 		}
